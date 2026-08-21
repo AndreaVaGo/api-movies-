@@ -1,7 +1,11 @@
 package dev.andrea.api_movies.pelicula;
 
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class PeliculaServiceImpl implements PeliculaService {
@@ -40,12 +44,20 @@ public class PeliculaServiceImpl implements PeliculaService {
     }
 
     @Override
-    public void delete(Long id) {
-        repository.deleteById(id);
+    public List<PeliculaEntity> findByTituloOrGenero(String texto) {
+        List<PeliculaEntity> porTitulo = repository.findByTituloContainingIgnoreCase(texto);
+        List<PeliculaEntity> porGenero = repository.findByGenero_NombreContainingIgnoreCase(texto);
+
+        Set<PeliculaEntity> resultado = new LinkedHashSet<>();
+        resultado.addAll(porTitulo);
+        resultado.addAll(porGenero);
+
+        return new ArrayList<>(resultado);
     }
 
     @Override
-    public List<PeliculaEntity> findByTituloOrGenero(String texto) {
-        return repository.findAll();
+    public void delete(Long id) {
+        repository.deleteById(id);
     }
+    
 }
