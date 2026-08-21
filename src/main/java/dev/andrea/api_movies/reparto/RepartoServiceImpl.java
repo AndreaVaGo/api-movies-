@@ -1,10 +1,11 @@
 package dev.andrea.api_movies.reparto;
 
+import dev.andrea.api_movies.implementations.InterfaceGenericService;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class RepartoServiceImpl implements RepartoService {
+public class RepartoServiceImpl implements InterfaceGenericService<RepartoEntity> {
 
     private final RepartoRepository repository;
 
@@ -13,7 +14,12 @@ public class RepartoServiceImpl implements RepartoService {
     }
 
     @Override
-    public List<RepartoEntity> obtenerTodos() {
+    public List<RepartoEntity> getEntities() {
         return repository.findAll();
+    }
+
+    @Override
+    public RepartoEntity getById(Long id) {
+        return repository.findById(id).orElseThrow();
     }
 }

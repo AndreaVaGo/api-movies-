@@ -1,10 +1,11 @@
 package dev.andrea.api_movies.genero;
 
+import dev.andrea.api_movies.implementations.InterfaceGenericService;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class GeneroServiceImpl implements GeneroService {
+public class GeneroServiceImpl implements InterfaceGenericService<GeneroEntity> {
 
     private final GeneroRepository repository;
 
@@ -13,7 +14,12 @@ public class GeneroServiceImpl implements GeneroService {
     }
 
     @Override
-    public List<GeneroEntity> obtenerTodos() {
+    public List<GeneroEntity> getEntities() {
         return repository.findAll();
+    }
+
+    @Override
+    public GeneroEntity getById(Long id) {
+        return repository.findById(id).orElseThrow();
     }
 }
