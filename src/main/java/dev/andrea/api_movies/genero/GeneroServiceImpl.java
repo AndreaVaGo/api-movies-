@@ -1,5 +1,6 @@
 package dev.andrea.api_movies.genero;
 
+import dev.andrea.api_movies.genero.exceptions.GeneroNotFoundException;
 import dev.andrea.api_movies.implementations.InterfaceGenericService;
 import org.springframework.stereotype.Service;
 import java.util.List;
