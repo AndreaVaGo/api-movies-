@@ -2,6 +2,8 @@ package dev.andrea.api_movies.pelicula;
 
 import org.springframework.stereotype.Service;
 
+import dev.andrea.api_movies.pelicula.exceptions.PeliculaNotFoundException;
+
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;

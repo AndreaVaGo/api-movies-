@@ -1,4 +1,4 @@
-package dev.andrea.api_movies.pelicula;
+package dev.andrea.api_movies.pelicula.exceptions;
 
 import dev.andrea.api_movies.exceptions.ApiException;
 import org.springframework.http.HttpStatus;
