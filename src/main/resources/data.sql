@@ -1,3 +1,9 @@
+DELETE FROM peliculas_reparto;
+DELETE FROM peliculas;
+DELETE FROM generos;
+DELETE FROM anios;
+DELETE FROM repartos;
+
 INSERT INTO generos (id, nombre) VALUES (DEFAULT, 'Ciencia ficcion');
 INSERT INTO generos (id, nombre) VALUES (DEFAULT, 'Terror');
 INSERT INTO generos (id, nombre) VALUES (DEFAULT, 'Animacion');
