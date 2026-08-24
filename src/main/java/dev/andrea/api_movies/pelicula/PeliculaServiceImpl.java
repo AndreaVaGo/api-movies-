@@ -23,7 +23,8 @@ public class PeliculaServiceImpl implements PeliculaService {
 
     @Override
     public PeliculaEntity getById(Long id) {
-        return repository.findById(id).orElseThrow();
+        return repository.findById(id)
+                .orElseThrow(() -> new PeliculaNotFoundException("Pelicula not found. Id " + id + " does not exist."));
     }
 
     @Override
@@ -33,7 +34,8 @@ public class PeliculaServiceImpl implements PeliculaService {
 
     @Override
     public PeliculaEntity update(Long id, PeliculaEntity pelicula) {
-        PeliculaEntity existente = repository.findById(id).orElseThrow();
+        PeliculaEntity existente = repository.findById(id)
+                .orElseThrow(() -> new PeliculaNotFoundException("Pelicula not found. Id " + id + " does not exist."));
         existente.setTitulo(pelicula.getTitulo());
         existente.setCalificacion(pelicula.getCalificacion());
         existente.setDuracion(pelicula.getDuracion());
@@ -59,5 +61,5 @@ public class PeliculaServiceImpl implements PeliculaService {
     public void delete(Long id) {
         repository.deleteById(id);
     }
-    
+
 }
