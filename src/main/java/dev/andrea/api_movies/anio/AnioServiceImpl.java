@@ -20,6 +20,7 @@ public class AnioServiceImpl implements InterfaceGenericService<AnioEntity> {
 
     @Override
     public AnioEntity getById(Long id) {
-        return repository.findById(id).orElseThrow();
+        return repository.findById(id)
+                .orElseThrow(() -> new AnioNotFoundException("Anio not found. Id " + id + " does not exist."));
     }
 }

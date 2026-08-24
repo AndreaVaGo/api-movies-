@@ -20,6 +20,7 @@ public class RepartoServiceImpl implements InterfaceGenericService<RepartoEntity
 
     @Override
     public RepartoEntity getById(Long id) {
-        return repository.findById(id).orElseThrow();
+        return repository.findById(id)
+                .orElseThrow(() -> new RepartoNotFoundException("Reparto not found. Id " + id + " does not exist."));
     }
 }

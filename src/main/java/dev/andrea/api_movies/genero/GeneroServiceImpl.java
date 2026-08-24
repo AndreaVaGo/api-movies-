@@ -20,6 +20,7 @@ public class GeneroServiceImpl implements InterfaceGenericService<GeneroEntity> 
 
     @Override
     public GeneroEntity getById(Long id) {
-        return repository.findById(id).orElseThrow();
+        return repository.findById(id)
+                .orElseThrow(() -> new GeneroNotFoundException("Genero not found. Id " + id + " does not exist."));
     }
 }
