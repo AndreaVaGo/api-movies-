@@ -2,7 +2,7 @@
 
 API REST desarrollada con Spring Boot para gestionar una base de datos de películas, con sus géneros, años y reparto (actores/actrices).
 
-Proyecto realizado como práctica del bootcamp de desarrollo web full-stack en Factoría F5.
+
 
 ## Tecnologías utilizadas
 
