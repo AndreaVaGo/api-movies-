@@ -1,11 +1,13 @@
 package dev.andrea.api_movies.reparto;
 
-import dev.andrea.api_movies.implementations.InterfaceGenericService;
+import dev.andrea.api_movies.reparto.dtos.RepartoDTORequest;
+import dev.andrea.api_movies.reparto.dtos.RepartoDTOResponse;
+import dev.andrea.api_movies.reparto.mappers.RepartoMapper;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class RepartoServiceImpl implements InterfaceGenericService<RepartoEntity> {
+public class RepartoServiceImpl implements RepartoService {
 
     private final RepartoRepository repository;
 
@@ -14,13 +16,23 @@ public class RepartoServiceImpl implements InterfaceGenericService<RepartoEntity
     }
 
     @Override
-    public List<RepartoEntity> getEntities() {
-        return repository.findAll();
+    public List<RepartoDTOResponse> getEntities() {
+        return repository.findAll().stream()
+                .map(RepartoMapper::toDTO)
+                .toList();
     }
 
     @Override
-    public RepartoEntity getById(Long id) {
-        return repository.findById(id)
+    public RepartoDTOResponse getById(Long id) {
+        RepartoEntity reparto = repository.findById(id)
                 .orElseThrow(() -> new RepartoNotFoundException("Reparto not found. Id " + id + " does not exist."));
+        return RepartoMapper.toDTO(reparto);
+    }
+
+    @Override
+    public RepartoDTOResponse storeEntity(RepartoDTORequest dto) {
+        RepartoEntity reparto = RepartoMapper.toEntity(dto);
+        RepartoEntity repartoGuardado = repository.save(reparto);
+        return RepartoMapper.toDTO(repartoGuardado);
     }
 }
