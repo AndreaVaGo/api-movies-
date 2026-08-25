@@ -32,9 +32,14 @@ El proyecto tiene 4 entidades principales:
 - **Película ↔ Reparto**: relación `N:M` (`@ManyToMany`). Una película puede tener varios actores/actrices en su reparto, y una misma persona puede aparecer en varias películas. Esta relación genera automáticamente una tabla intermedia (`peliculas_reparto`).
 
 Los diagramas de Chen y de patas de gallo (crow's foot) del modelado completo se incluyen en la carpeta [`/assets`](./assets) del repositorio:
-
-- [`ER-peliculas-chen.drawio.png`](./assets/ER-peliculas-chen.drawio.png) — diagrama de Chen
-- [`diagrama-patasgallo-peliculas.drawio.png`](./assets/diagrama-patasgallo-peliculas.drawio.png) — diagrama de patas de gallo
+ 
+**Diagrama de Chen**
+ 
+![Diagrama de Chen](./assets/ER-peliculas-chen.drawio.png)
+ 
+**Diagrama de patas de gallo**
+ 
+![Diagrama de patas de gallo](./assets/diagrama-patasgallo-peliculas.drawio.png)
 
 ## Arquitectura del proyecto
 
